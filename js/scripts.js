@@ -109,6 +109,10 @@ modalForm.addEventListener("submit", function (e) {
 
                 if (data.success) {
 
+                    const submitButton = document.getElementById('submit-button');
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Submitting...';
+
                     alertContainer.innerHTML = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         ${data.message}
@@ -122,6 +126,7 @@ modalForm.addEventListener("submit", function (e) {
 
                 } else {
                     // Show failure alert
+
                     alertContainer.innerHTML = `
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Failed to submit the form. ${data.message}
@@ -130,6 +135,7 @@ modalForm.addEventListener("submit", function (e) {
                 }
             })
             .catch(((error) => {
+
                 console.log("Error submitting the form", error);
             }
             ))
